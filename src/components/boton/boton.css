@@ -9,7 +9,7 @@
     border: none;
     margin: 32px 0;
     box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.06) ;
-    cursor: help;
+    cursor:pointer;
 }
 
 .boton:hover {

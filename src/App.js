@@ -6,11 +6,15 @@ import MiOrg from './components/MiOrg';
 
 function App() {
   const [mostrarForm,actualizarMostrar] = useState(true)
+  const cambiarMostrar = () => {
+    actualizarMostrar(!mostrarForm);
+  }
+  //es lo mismo que {mostrarForm === true ? <Formulario/> : <div></div> }//
   return (
     <div>
       <Header />
-      <Formulario/>
-      <MiOrg/>
+      {mostrarForm && <Formulario/>}
+      <MiOrg cambiarMostrar={cambiarMostrar}/>
     </div>
   );
 }
