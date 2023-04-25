@@ -10,6 +10,10 @@ function App() {
   const cambiarMostrar = () => {
     actualizarMostrar(!mostrarForm);
   }
+
+  const registrarCollaborador = (colaborador) => {
+
+  }
   const equipos = [
     {
       titulo: "Programación",
@@ -51,9 +55,11 @@ function App() {
   return (
     <div>
       <Header />
-      {mostrarForm && <Formulario/>}
+      {mostrarForm && <Formulario 
+       equipos={equipos.map((equipo) => equipo.titulo )}/>}
+      registrarCollaborador={registrarCollaborador}
       <MiOrg cambiarMostrar={cambiarMostrar}/>
-      {equipos.map( (equipo) => <Equipo datos={equipo} key={equipo.titulo}/>)}
+      {equipos.map( (equipo) => <Equipo datos={equipo } key={equipo.titulo}/>)}
     </div>
   );
 }
