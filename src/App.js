@@ -7,12 +7,14 @@ import Equipo from './components/equipos/equipo';
 
 function App() {
   const [mostrarForm,actualizarMostrar] = useState(false)
+  const [colaboradores, actualizarColaboradores] = useState([])
   const cambiarMostrar = () => {
     actualizarMostrar(!mostrarForm);
   }
 
   const registrarCollaborador = (colaborador) => {
-
+    //Spread operator
+    actualizarColaboradores([...colaboradores, colaborador])
   }
   const equipos = [
     {
@@ -57,7 +59,7 @@ function App() {
       <Header />
       {mostrarForm && <Formulario 
        equipos={equipos.map((equipo) => equipo.titulo )}/>}
-      registrarCollaborador={registrarCollaborador}
+      registrarColaborador={registrarCollaborador}
       <MiOrg cambiarMostrar={cambiarMostrar}/>
       {equipos.map( (equipo) => <Equipo datos={equipo } key={equipo.titulo}/>)}
     </div>
