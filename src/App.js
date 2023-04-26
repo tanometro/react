@@ -12,7 +12,7 @@ function App() {
     actualizarMostrar(!mostrarForm);
   }
 
-  const registrarCollaborador = (colaborador) => {
+  const registrarColaborador = (colaborador) => {
     //Spread operator
     actualizarColaboradores([...colaboradores, colaborador])
   }
@@ -58,10 +58,17 @@ function App() {
     <div>
       <Header />
       {mostrarForm && <Formulario 
-       equipos={equipos.map((equipo) => equipo.titulo )}/>}
-      registrarColaborador={registrarCollaborador}
+       equipos={equipos.map((equipo) => equipo.titulo )}
+       registrarColaborador={registrarColaborador}
+       />}
+      
       <MiOrg cambiarMostrar={cambiarMostrar}/>
-      {equipos.map( (equipo) => <Equipo datos={equipo } key={equipo.titulo}/>)}
+
+      {equipos.map( (equipo) => <Equipo 
+      datos={equipo } 
+      key={equipo.titulo}
+      colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
+      />)}
     </div>
   );
 }
