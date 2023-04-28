@@ -4,6 +4,7 @@ import Header from './components/header/header.js';
 import Formulario from './components/formulario/formulario.js';
 import MiOrg from './components/MiOrg';
 import Equipo from './components/equipos/equipo';
+import Footer from './components/footer';
 
 function App() {
   const [mostrarForm,actualizarMostrar] = useState(false)
@@ -69,6 +70,7 @@ function App() {
       key={equipo.titulo}
       colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
       />)}
+      <Footer/>
     </div>
   );
 }

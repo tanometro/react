@@ -16,7 +16,10 @@ const Equipo = (props) => {
         <h3 style={{borderColor: colorPrimario}}>{titulo}</h3>
         <div className="colaboradores">
            {
-            colaboradores.map( (colaborador, index) => <Colaborador datos={colaborador} key={colaborador.index}/>)
+            colaboradores.map( (colaborador, index) => <Colaborador 
+            datos={colaborador} 
+            key={colaborador.index}
+            colorPrimario={colorPrimario}/>)
            }
         </div>
 
