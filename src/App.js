@@ -17,6 +17,12 @@ function App() {
     //Spread operator
     actualizarColaboradores([...colaboradores, colaborador])
   }
+
+  //Eliminar colaborador
+  const eliminarColaborador = () => {
+    console.log("Eliminar")
+  }
+
   const equipos = [
     {
       titulo: "Programación",
@@ -66,9 +72,10 @@ function App() {
       <MiOrg cambiarMostrar={cambiarMostrar}/>
 
       {equipos.map( (equipo) => <Equipo 
-      datos={equipo } 
+      datos={equipo} 
       key={equipo.titulo}
       colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
+      deteleColaborador={eliminarColaborador}
       />)}
       <Footer/>
     </div>

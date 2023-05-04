@@ -2,8 +2,11 @@ import "./colaborador.css"
 
 const Colaborador = (props) => {
     const {nombre, puesto, foto, equipo} = props.datos
-    const {colorPrimario} = props
+    const {colorPrimario, deleteColaborador} = props
     return <div className="colaborador ">
+        <span onClick={deleteColaborador}>
+
+        </span>
         <div className="encabezado" style={{backgroundColor: colorPrimario}}>
             <img src={foto} alt={nombre}/>
         </div>
