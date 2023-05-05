@@ -23,6 +23,9 @@ function App() {
     console.log("Eliminar")
   }
 
+  const actualizarColor = (color, titulo) => {
+
+  }
   const equipos = [
     {
       titulo: "Programación",
@@ -75,7 +78,8 @@ function App() {
       datos={equipo} 
       key={equipo.titulo}
       colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
-      deteleColaborador={eliminarColaborador}
+      deleteColaborador={eliminarColaborador}
+      updateColor={actualizarColor}
       />)}
       <Footer/>
     </div>
