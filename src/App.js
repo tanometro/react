@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { v4 as uuid } from 'uuid'
 import './App.css';
 import Header from './components/header/header.js';
 import Formulario from './components/formulario/formulario.js';
@@ -11,36 +12,43 @@ function App() {
   const [colaboradores, actualizarColaboradores] = useState([])
   const [equipos, actualizarEquipos] = useState([
     {
+      id: uuid(),
       titulo: "Programación",
       colorPrimario: "#57C278",
       colorSecundario: "#D9F7E9"
     },
     {
+      id: uuid(),
       titulo: "Front-end",
       colorPrimario: "#82CFFA",
       colorSecundario: "#E8F8FF"
     },
     {
+      id: uuid(),
       titulo: "Data Science",
       colorPrimario: "#A6D157",
       colorSecundario: "#F0F8E2"
     },
     {
+      id: uuid(),
       titulo: "Devops",
       colorPrimario: "#E06B69",
       colorSecundario: "#FDE7E8"
     },
     {
+      id: uuid(),
       titulo: "UX y Diseño",
       colorPrimario: "#DB6EBF",
       colorSecundario: "#FAE9F5"
     },
     {
+      id: uuid(),
       titulo: "Móvil",
       colorPrimario: "#FFBA05",
       colorSecundario: "#FFF5D9"
     },
     {
+      id: uuid(),
       titulo: "Innovación y gestión",
       colorPrimario: "#FF8A29",
       colorSecundario: "#FFEEDF"
@@ -56,13 +64,15 @@ function App() {
   }
 
   //Eliminar colaborador
-  const eliminarColaborador = () => {
-    console.log("Eliminar")
+  const eliminarColaborador = (id) => {
+    console.log("eliminar", id);
+    const nuevosColaboradores = colaboradores.filter((colaborador) => colaborador.id !== id)
+    actualizarColaboradores(nuevosColaboradores)
   }
 
-  const actualizarColor = (color, titulo) => {
+  const actualizarColor = (color, id) => {
     const equiposActualizados = equipos.map((equipo) => {
-      if (equipo.titulo === titulo) {
+      if (equipo.id === id ) {
         equipo.colorPrimario = color;
     }
     return equipo 
