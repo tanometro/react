@@ -9,24 +9,7 @@ import Footer from './components/footer';
 function App() {
   const [mostrarForm,actualizarMostrar] = useState(false)
   const [colaboradores, actualizarColaboradores] = useState([])
-  const cambiarMostrar = () => {
-    actualizarMostrar(!mostrarForm);
-  }
-
-  const registrarColaborador = (colaborador) => {
-    //Spread operator
-    actualizarColaboradores([...colaboradores, colaborador])
-  }
-
-  //Eliminar colaborador
-  const eliminarColaborador = () => {
-    console.log("Eliminar")
-  }
-
-  const actualizarColor = (color, titulo) => {
-
-  }
-  const equipos = [
+  const [equipos, actualizarEquipos] = useState([
     {
       titulo: "Programación",
       colorPrimario: "#57C278",
@@ -62,7 +45,31 @@ function App() {
       colorPrimario: "#FF8A29",
       colorSecundario: "#FFEEDF"
     }
-]
+])
+  const cambiarMostrar = () => {
+    actualizarMostrar(!mostrarForm);
+  }
+
+  const registrarColaborador = (colaborador) => {
+    //Spread operator
+    actualizarColaboradores([...colaboradores, colaborador])
+  }
+
+  //Eliminar colaborador
+  const eliminarColaborador = () => {
+    console.log("Eliminar")
+  }
+
+  const actualizarColor = (color, titulo) => {
+    const equiposActualizados = equipos.map((equipo) => {
+      if (equipo.titulo === titulo) {
+        equipo.colorPrimario = color;
+    }
+    return equipo 
+  })
+  actualizarEquipos(equiposActualizados)
+  }
+ 
   //es lo mismo que {mostrarForm === true ? <Formulario/> : <div></div> }//
   return (
     <div>
