@@ -8,7 +8,7 @@ import Equipo from './components/equipos/equipo';
 import Footer from './components/footer';
 
 function App() {
-  const [mostrarForm,actualizarMostrar] = useState(false)
+  const [mostrarForm,actualizarMostrar] = useState(true)
   const [colaboradores, actualizarColaboradores] = useState([])
   const [equipos, actualizarEquipos] = useState([
     {
@@ -59,6 +59,7 @@ function App() {
   }
 
   const registrarColaborador = (colaborador) => {
+    const nuevoColaborador = { ...colaborador, id: uuid() };
     //Spread operator
     actualizarColaboradores([...colaboradores, colaborador])
   }
@@ -67,7 +68,7 @@ function App() {
   const eliminarColaborador = (id) => {
     console.log("eliminar", id);
     const nuevosColaboradores = colaboradores.filter((colaborador) => colaborador.id !== id)
-    actualizarColaboradores(nuevosColaboradores)
+     actualizarColaboradores(nuevosColaboradores)
   }
 
   const actualizarColor = (color, id) => {
@@ -79,7 +80,10 @@ function App() {
   })
   actualizarEquipos(equiposActualizados)
   }
- 
+  
+  const crearEquipo = (nuevoEquipo) => {
+    actualizarEquipos([...equipos, {...nuevoEquipo, id: uuid()}])
+  }
   //es lo mismo que {mostrarForm === true ? <Formulario/> : <div></div> }//
   return (
     <div>
@@ -87,6 +91,7 @@ function App() {
       {mostrarForm && <Formulario 
        equipos={equipos.map((equipo) => equipo.titulo )}
        registrarColaborador={registrarColaborador}
+       crearEquipo={crearEquipo }
        />}
       
       <MiOrg cambiarMostrar={cambiarMostrar}/>

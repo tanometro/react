@@ -5,7 +5,7 @@ const Colaborador = (props) => {
     const {nombre, puesto, foto, equipo, id} = props.datos
     const {colorPrimario, deleteColaborador} = props
     return <div className="colaborador ">
-        <AiFillCloseCircle onClick={() => deleteColaborador} className="eliminar"/>
+        <AiFillCloseCircle onClick={() => deleteColaborador(id)} className="eliminar"/>
         <div className="encabezado" style={{backgroundColor: colorPrimario}}>
             <img src={foto} alt={nombre}/>
         </div>
