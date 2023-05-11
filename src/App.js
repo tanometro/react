@@ -8,8 +8,24 @@ import Equipo from './components/equipos/equipo';
 import Footer from './components/footer';
 
 function App() {
-  const [mostrarForm,actualizarMostrar] = useState(true)
-  const [colaboradores, actualizarColaboradores] = useState([])
+  const [mostrarForm,actualizarMostrar] = useState(false)
+  const [colaboradores, actualizarColaboradores] = useState([{
+    id: uuid(),
+    nombre: "Angelo",
+    puesto: "Dev",
+    foto: "https://github.com/tanometro.png",
+    equipo: "Programación",
+    fav: true
+  },
+  {
+    id: uuid(),
+    nombre: "Angelino",
+    puesto: "Programador",
+    foto: "https://github.com/tanometro.png",
+    equipo: "Front-end",
+    fav: false
+  }
+  ])
   const [equipos, actualizarEquipos] = useState([
     {
       id: uuid(),
@@ -84,6 +100,19 @@ function App() {
   const crearEquipo = (nuevoEquipo) => {
     actualizarEquipos([...equipos, {...nuevoEquipo, id: uuid()}])
   }
+  
+  const like = (id) => {
+    console.log("like", id)}
+   /* const colaboradoresActualizados = colaboradores.map((colaborador) => {
+      if (colaborador.id === id) {
+        colaborador.fav = !colaborador.fav
+      }
+      return colaborador
+    })
+    actualizarColaboradores(colaboradoresActualizados)
+  } */
+
+  //Ternario
   //es lo mismo que {mostrarForm === true ? <Formulario/> : <div></div> }//
   return (
     <div>
@@ -102,6 +131,7 @@ function App() {
       colaboradores={colaboradores.filter(colaborador => colaborador.equipo === equipo.titulo)}
       deleteColaborador={eliminarColaborador}
       updateColor={actualizarColor}
+      like={like}
       />)}
       <Footer/>
     </div>

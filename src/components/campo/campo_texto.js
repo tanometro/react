@@ -1,21 +1,26 @@
 import { useState } from "react"
 import "./campo_texto.css"
 
-const CampoTexto = (props) => {
+const Campo = (props) => {
     const placeholderModificado = `${props.placeholder}...`
-    const [valor, setValor] = useState("")
+
+    //Destructuracion para definir por defecto el typo del campo
+    const {type = "text"} = props
+
+    console.log(props.type);
     const manejarCambio = (e) => {
         props.setValor(e.target.value)
     }
-    return <div className="campo-texto">
+    return <div className={`campo campo-${type}`}>
         <label>{props.titulo}</label>
         <input 
         placeholder={placeholderModificado} 
         required={props.required}
         value={props.valor}
         onChange={manejarCambio}
+        type={type}
         />
     </div>
 }
 
-export default CampoTexto;
+export default Campo;
